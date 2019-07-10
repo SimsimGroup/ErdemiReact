@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Jura|Noto+Serif|Open+Sans|PT+Sans+Caption|Roboto+Slab|Rubik');
+ 
+.leftpanel {
+    background-color: #444444;
+    min-height: 100vh;
+    font-family: 'Jura', sans-serif;
+}
+
+.uk-navbar-container {
+    background-color: #009246!important;
+}
+
+.uk-navbar-nav>li>a {
+    font-family: 'Jura', sans-serif;
+    font-size: 1.1rem;
+}
+
+.uk-legend {
+    font-family: 'Rubik', sans-serif;
+}
+
+.back-muted {
+    background-color: #eeeeee;
+}
+
+.uk-input,.uk-select,.uk-textarea {
+    border: 1px solid #adadad;
+}
+
+.loginpanel {
+    border: 1px solid #444444;
+    font-family: 'Jura', sans-serif;
+}
+
+.enterlog {
+    background-color: #009246;
+}
+
+#numberCircle {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    padding: 15px;
+    border: 2px solid #009246;
+    color: white;
+    font: 1rem 'Jura', sans-serif;
+}
