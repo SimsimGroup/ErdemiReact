@@ -47,7 +47,7 @@ class App extends Component {
                 <Route path='/completeorder' component={CompleteOrder}/>
                 <Route path='/quiz' component={Quiz}/>
                 <Route path='/addquiz' component={Addquiz}/>
-                <Route path='/addpromo' component={Addpromo}/>
+                <Route path='/addpromo/:id' component={Addpromo}/>
                 <Route path='/promolist' component={PromoList}/>
                 <Route path='/login' component={Login} />
             </Switch>

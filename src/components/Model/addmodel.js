@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {ModelTemplate} from "./modeltemplate";
-import {BrandTemplate} from "../Brand/brandtemplate";
 import {SelectTemplate} from "../Good/selecttemplate";
 
 class Addmodel extends React.Component {
@@ -11,20 +9,23 @@ class Addmodel extends React.Component {
             title: '',
             brand_id: 1,
             brand: '',
-            brandList: [],
+            brandsData: [],
             image: null,
-        }
+        };
         if(this.props.match.params.id){
             axios.get(`models/${this.props.match.params.id}`, {}).then(res => {
                 let model = res.data.data;
                 this.setState({title: model.title});
-                this.setState({brandList: parseInt(model.brand_id)});
             })
         }
     };
     componentDidMount() {
-        axios.get(`/brands`).then(res => {
-            this.setState({brandList: res.data.data});
+        axios.get(`brands`,{
+            params: {
+                limit: 250
+            }
+        }).then(res => {
+            this.setState({brandsData: res.data.data});
         });
     };
     handleChangeMakeName = (e) => {
@@ -49,7 +50,7 @@ class Addmodel extends React.Component {
         const {brand, title, image} = this.state;
         ModelData.set ('title', title);
         ModelData.set ('brand', brand);
-        ModelData.set ('image', image);
+        ModelData.append ('image', image);
         if(this.props.match.params.id){
             axios.put(`/models/${this.props.match.params.id}`, ModelData).then(res => {
                 console.log(res);
@@ -65,7 +66,7 @@ class Addmodel extends React.Component {
     };
 
     render() {
-        const {brand, title, brandList} = this.state;
+        const {brand, title, brandsData} = this.state;
         return (
             <div className="uk-container">
                 <form onSubmit={this.handleSubmitModel}>
@@ -74,8 +75,8 @@ class Addmodel extends React.Component {
                             <div className="uk-margin">
                                 <select className="uk-select" value={brand} onChange={this.handleChangeMakeName} >
                                     {
-                                        brandList.map(brandList => {
-                                            return <SelectTemplate key={brandList.id} {...brandList} />
+                                        brandsData.map(brandsData => {
+                                            return <SelectTemplate key={brandsData.id} {...brandsData} />
                                         })
                                     }
                                 </select>

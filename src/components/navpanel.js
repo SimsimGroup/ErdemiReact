@@ -76,7 +76,7 @@ class NavPanel extends React.Component {
                         <a href="#nav" className="uk-accordion-title">Акции</a>
                         <div className="uk-accordion-content uk-panel uk-padding-small">
                             <div className="uk-margin-remove">
-                                <Link to='/addpromo' className="uk-button uk-button-text">Создать акции</Link>
+                                <Link to='/promolist' className="uk-button uk-button-text">Список акции</Link>
                             </div>
                         </div>
                     </li>

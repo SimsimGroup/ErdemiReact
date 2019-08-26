@@ -6,8 +6,7 @@ class CompleteOrder extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
-            users: [],
+            orders: [],
             total: null,
             per_page: null,
             current_page: null
@@ -19,9 +18,9 @@ class CompleteOrder extends React.Component{
     };
 
     makeRequestWithPage = pageNumber => {
-        axios.get(`https://reqres.in/api/users?page=${pageNumber}`).then(res => {
+        axios.get(`orders?page=${pageNumber}`).then(res => {
             this.setState({
-                users: res.data.data,
+                orders: res.data.orders,
                 total: res.data.total,
                 per_page: res.data.per_page,
                 current_page: res.data.page,
@@ -29,17 +28,18 @@ class CompleteOrder extends React.Component{
         })
     };
     render() {
-        let users,renderPageNumbers;
-        if(this.state.users !== null) {
-            users = this.state.users.map(user => (
-                <tr key={user.id}>
-                    <td>{user.last_name}</td>
-                    <td>{user.first_name}</td>
+        let completeOrders,renderPageNumbers,OrderItems;
+        OrderItems = this.state.orders.map(props => (
+            <li key={props.id}>{props.items}</li>
+        ));
+        if(this.state.orders !== null) {
+            completeOrders = this.state.orders.map(props => (
+                <tr key={props.id}>
+                    <td>{props.customer_name}</td>
+                    <td>{props.shipping_address}</td>
                     <td>
                         <ul className="uk-list uk-list-bullet">
-                            <li>{user.email}</li>
-                            <li>{user.email}</li>
-                            <li>{user.email}</li>
+                            {OrderItems}
                         </ul>
                     </td>
                 </tr>
@@ -89,7 +89,7 @@ class CompleteOrder extends React.Component{
                          </tr>
                      </thead>
                      <tbody>
-                         {users}
+                         {completeOrders}
                      </tbody>
                  </table>
                 <ul className="uk-pagination uk-flex-center" data-uk-margin>

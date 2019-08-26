@@ -55,6 +55,11 @@ class Goodlist extends React.Component {
                     </Link>
                 </td>
                 <td>
+                    <Link to={`/addpromo/${props.id}`}>
+                        <button className="uk-button uk-button-default uk-button-small">Промо</button>
+                    </Link>
+                </td>
+                <td>
                     <button onClick={() => {this.deleteRow(index, props.id);}}  className="uk-button uk-button-danger uk-button-small">Удалить</button>
                 </td>
             </tr>
@@ -73,6 +78,7 @@ class Goodlist extends React.Component {
                         <th>Наименование</th>
                         <th>Цена</th>
                         <th>Редактировать</th>
+                        <th>Добавить акцию</th>
                         <th></th>
                     </tr>
                 </thead>
